@@ -1,4 +1,4 @@
-const PromptSuggestionsButton = ({text,onClick}) => {
+const PromptSuggestionButton = ( { text, onClick }) => {
     return (
         <button 
             className="prompt-suggestion-button"
@@ -10,4 +10,4 @@ const PromptSuggestionsButton = ({text,onClick}) => {
     )
 }
 
-export default PromptSuggestionsButton;
+export default PromptSuggestionButton 

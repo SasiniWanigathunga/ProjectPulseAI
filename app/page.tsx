@@ -1,52 +1,48 @@
 "use client"
-import Image from 'next/image'
-import f1GPTlogo from "./assets/f1logo.png"
+import Image from "next/image"
+import ProjectPulseAI from "./assets/ProjectPulseAI.png"
 import { useChat } from "ai/react"
 import { Message } from "ai"
-import LoadingBubble from './components/LoadingBubble'
-import PromptSuggestionsRow from './components/PromptSuggestionsRow'
-import Bubble from './components/Bubble'
 
-
+import Bubble from "./components/Bubble"
+import LoadingBubble from "./components/LoadingBubble"
+import PromptSuggestionsRow from "./components/PromptSuggestionsRow"
 
 const Home = () => {
-    const { append, isLoading, messages, input, handleInputChange, handleSubmit } = useChat()
-
+    const {append, isLoading, messages, input, handleInputChange, handleSubmit} = useChat()
     const noMessages = !messages || messages.length === 0
-
-    const handlePrompt = (promptText) => {
+    
+    const handlePrompt = ( promptText) => {
         const msg: Message = {
             id: crypto.randomUUID(),
             content: promptText,
-            role: 'user'
+            role: "user"
         }
         append(msg)
     }
 
-    return (
+    return(
         <main>
-            <Image src={f1GPTlogo} width='250' alt="Formula 1 GPT Logo" />
-            <section className={noMessages ? '' : 'populated'}>
+            <Image src={ProjectPulseAI} width="150" alt="ProjectPulseAI Logo"/>
+            <section className={noMessages ? "" : "populated"}>
                 {noMessages ? (
                     <>
-                        <p className='starter-text'>Ask me anything about the F1 season</p>
+                        <p className="starter-text">
+                            Welcome to F1GPT! Ask me anything about Formula 1 and I'll do my best to help you out.
+                        </p>
                         <br/>
-                        <PromptSuggestionsRow onPromptClick = {handlePrompt}/>
-
+                        <PromptSuggestionsRow onPromptClick={handlePrompt}/>
                     </>
                 ) : (
-                    <>   
-                        {messages.map((message, index) => <Bubble key={`message-${index}`} message={message}/>)}  
+                    <>
+                        { messages.map((message, index) => <Bubble key={`message-${index}`} message={message}/>)}
                         {isLoading && <LoadingBubble/>}
-                        {/* <LoadingBubble/> */}
                     </>
                 )}
-
             </section>
             <form onSubmit={handleSubmit}>
-                    <input className='question-box' onChange={handleInputChange} value={input} placeholder='Ask me anything about the F1 season' />
-                    <input type='submit'/>    
-                    {/* <button type='submit'>Send</button> */}
+                <input className="question-box" onChange={handleInputChange} value={input} placeholder="Ask me something..."/>
+                <input type="submit"/>
             </form>
         </main>
     )

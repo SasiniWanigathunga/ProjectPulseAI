@@ -1,17 +1,16 @@
 import "./global.css"
 
 export const metadata = {
-    title: "F1 GPT",
-    description: "The place to find all the information about the F1 season",
+    title: "ProjectPulseAI",
+    description: "The place to go for all your project management needs",
 }
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="en" data-arp="">    
-            <body>
-                {children}
-            </body>
+        <html lang="en" data-arp="">
+            <body>{children}</body>
         </html>
+
     )
 }
 
